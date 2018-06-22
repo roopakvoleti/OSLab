@@ -33,5 +33,11 @@ void *threadRoutine(void *arg){
     
     //get a pid
     int id = allocate_pid();
+    
+if(id==-1){
+        puts("No PID available.");
+    }
+    else{
+        printf("Thread [%3d] PID [%3d] Allocated\n",tid,id+MIN_PID);
 
 
