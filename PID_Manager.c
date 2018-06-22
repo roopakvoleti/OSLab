@@ -7,9 +7,8 @@
 
 #define MIN_PID 100
 #define MAX_PID 1000
-#define NO_OF_P 16      //no of process/threads
-
-//not using map (bitmap), using a preallocated char array instead
+#define NO_OF_P 40     
+//Using a preallocated char array instead
 int pid[MAX_PID-MIN_PID]={0};
 
 int allocate_pid(void){
@@ -38,6 +37,35 @@ if(id==-1){
         puts("No PID available.");
     }
     else{
-        printf("Thread [%3d] PID [%3d] Allocated\n",tid,id+MIN_PID);
+        printf("Thread : [%3d] Process(PID) : [%3d]  Allocated\n",tid,id+MIN_PID);
+        //sleep for a random time between 1-10 seconds
+        
+        int r=1+rand()%30;
+        //uncomment next line to make the thread sleep for a random time
+        //sleep(r);
+
+        printf("Thread : [%3d] Process(PID) : [%3d]  Released after : %d sec\n",tid,id+MIN_PID,r);
+        release_pid(id);
+    }
+    pthread_exit(NULL);
+}
+
+int main(){
+    int i;
+    
+    pthread_t process[NO_OF_P];
+    srand(time(NULL));
+    for(i=0; i<NO_OF_P; i++){
+        if(pthread_create(&process[i],NULL,threadRoutine,(void*)&i))
+            return -1*printf("Error in thread %d creation!!!\n",i);///return a negative integer     
+    }
+
+    for(i=0; i<NO_OF_P; i++)
+        pthread_join(process[i],NULL);
+    
+    //wait(NULL);
+    return 0*printf("\nSuccessfully Completed....Exiting!\n");
+}
+
 
 
