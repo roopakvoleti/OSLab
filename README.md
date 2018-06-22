@@ -25,3 +25,17 @@ sleep for a random period of time, and then release the pid. (Sleeping for a
 random period of time approximates the typical pid usage in which a pid is assigned
 to a new process, the process executes and then terminates,
 and the pid is released on the process’s termination.)
+
+#Output & Debug Information
+
+#Debugging
+
+![debug1](https://user-images.githubusercontent.com/40486924/41785457-508dd2ac-7660-11e8-854b-3b8229751904.PNG)
+
+![debug2](https://user-images.githubusercontent.com/40486924/41785513-78361a58-7660-11e8-9a6c-ecc2ae5499e0.PNG)
+
+
+#Output
+
+![output](https://user-images.githubusercontent.com/40486924/41785572-a5bcfc9e-7660-11e8-935d-53c649437edf.PNG)
+
